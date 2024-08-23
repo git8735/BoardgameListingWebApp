@@ -10,7 +10,13 @@ pipeline {
         SCANNER_HOME= tool 'sonar-scanner'
     }
 
-    stages {        
+    stages {
+        stage('Git checkout') {
+            steps {
+               git 'https://github.com/git8735/BoardgameListingWebApp.git'
+            }
+        }
+
         stage('Compile') {
             steps {
                 sh "mvn compile"
